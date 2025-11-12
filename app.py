@@ -12,6 +12,13 @@ def load_model():
     except ValueError as e:
         st.error(f"Error loading model: {e}")
         st.stop()
+    try:
+         import tensorflow as tf
+         print("TensorFlow version:", tf.__version__)
+     except ImportError as e:
+         print("TensorFlow not found:", e)
+     
+
 
 model = load_model()
 
@@ -52,3 +59,4 @@ if uploaded_file is not None:
         st.error(f"Error processing image: {e}. Ensure the image is a valid handwritten digit (e.g., 28x28 or resizable).")
 else:
     st.info("Please upload an image to get started.")
+
